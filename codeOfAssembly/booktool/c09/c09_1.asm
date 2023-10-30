@@ -173,7 +173,7 @@ start:
  .idle:
       hlt                                ;使CPU进入低功耗状态，直到用中断唤醒
       not byte [12*160 + 33*2+1]         ;反转显示属性 
-      jmp .idle
+      jmp .idle  
 
 ;-------------------------------------------------------------------------------
 put_string:                              ;显示串(0结尾)。
@@ -258,8 +258,7 @@ put_char:                                ;显示一个字符
          loop .cls
 
          mov bx,1920
-
- .set_cursor:
+.set_cursor
          mov dx,0x3d4
          mov al,0x0e
          out dx,al

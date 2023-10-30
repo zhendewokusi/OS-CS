@@ -65,7 +65,7 @@ start:
          mov ds,eax
      
          mov ebx,message_1
-         call far [fs:PrintString]
+         call far [fs:PrintString]0x0c
      
          mov eax,100                         ;逻辑扇区号100
          mov ebx,buffer                      ;缓冲区偏移地址

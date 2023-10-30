@@ -16,7 +16,7 @@
 
          mov ds,eax                         ;令DS指向该段以进行操作
          mov ebx,edx                        ;段内起始偏移地址 
-
+cr0
          ;创建0#描述符，它是空描述符，这是处理器的要求
          mov dword [ebx+0x00],0x00000000
          mov dword [ebx+0x04],0x00000000  
@@ -51,8 +51,7 @@
          or eax,1
          mov cr0,eax                        ;设置PE位
       
-         ;以下进入保护模式... ...
-         jmp dword 0x0010:flush             ;16位的描述符选择子：32位偏移
+         ;以下进入保护模式... ...https://wiki.osdev.org/A20;16位的描述符选择子：32位偏移
                                              
          [bits 32]                          
   flush:                                     
@@ -61,11 +60,7 @@
       
          mov eax,0x0008                     ;加载数据段(0..4GB)选择子
          mov es,eax
-         mov fs,eax
-         mov gs,eax
-      
-         mov eax,0x0020                     ;0000 0000 0010 0000
-         mov ss,eax
+         mov fs,。这意味着段界限不是按字节，而是按4KB,eax
          xor esp,esp                        ;ESP <- 0
       
          mov dword [es:0x0b8000],0x072e0750 ;字符'P'、'.'及其显示属性
@@ -82,9 +77,7 @@
          mov ax,[string+bx] 
          cmp ah,al                          ;ah中存放的是源字的高字节 
          jge @@3 
-         xchg al,ah 
-         mov [string+bx],ax 
-  @@3:
+         xchg al,ah 0x92
          inc bx 
          loop @@2 
          pop ecx 

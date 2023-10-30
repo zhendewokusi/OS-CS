@@ -27,7 +27,7 @@ SECTION mbr align=16 vstart=0x7c00
          call read_hard_disk_0
       
          ;以下判断整个程序有多大
-         mov dx,[2]                      ;曾经把dx写成了ds，花了二十分钟排错 
+         mov dx,[2]
          mov ax,[0]
          mov bx,512                      ;512字节每扇区
          div bx
@@ -102,6 +102,8 @@ read_hard_disk_0:                        ;从硬盘读取一个逻辑扇区
 
          inc dx                          ;0x1f6
          mov al,0xe0                     ;LBA28模式，主盘
+;0xe0 的二进制表示为 1110 0000,启用 LBA28 模式，并将硬盘设置为主硬盘（Primary Drive）
+
          or al,ah                        ;LBA地址27~24
          out dx,al
 
@@ -112,8 +114,8 @@ read_hard_disk_0:                        ;从硬盘读取一个逻辑扇区
   .waits:
          in al,dx
          and al,0x88
-         cmp al,0x08
-         jnz .waits                      ;不忙，且硬盘已准备好数据传输 
+         cmp al,0x08                     ;如果 al 的值等于 0x08，表示硬盘已准备好。
+         jnz .waits                     
 
          mov cx,256                      ;总共要读取的字数
          mov dx,0x1f0

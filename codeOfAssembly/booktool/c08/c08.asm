@@ -27,7 +27,7 @@ SECTION header vstart=0                     ;定义用户程序头部段
 SECTION code_1 align=16 vstart=0         ;定义代码段1（16字节对齐） 
 put_string:                              ;显示串(0结尾)。
                                          ;输入：DS:BX=串地址
-         mov cl,[bx]
+         mov cl,[bx]                     ;改变ZF标识位
          or cl,cl                        ;cl=0 ?
          jz .exit                        ;是的，返回主程序 
          call put_char
@@ -50,26 +50,26 @@ put_char:                                ;显示一个字符
          ;以下取当前光标位置
          mov dx,0x3d4
          mov al,0x0e
-         out dx,al
+         out dx,al                       ;选择光标位置的高字节寄存器
          mov dx,0x3d5
-         in al,dx                        ;高8位 
+         in al,dx                        ;从0x3d5读取高字节寄存器的数值并且存储在al中
          mov ah,al
 
          mov dx,0x3d4
          mov al,0x0f
          out dx,al
          mov dx,0x3d5
-         in al,dx                        ;低8位 
-         mov bx,ax                       ;BX=代表光标位置的16位数
+         in al,dx
+         mov bx,ax                       ;BX代表光标位置的16位数
 
          cmp cl,0x0d                     ;回车符？
          jnz .put_0a                     ;不是。看看是不是换行等字符 
-         mov ax,bx                       ;此句略显多余，但去掉后还得改书，麻烦 
-         mov bl,80                       
-         div bl
-         mul bl
-         mov bx,ax
-         jmp .set_cursor
+        mov ax,bx                       ;此句略显多余，但去掉后还得改书，麻烦 
+        mov bl,80                       
+        div bl
+        mul bl
+        mov bx,ax                       ;-----
+         jmp .set_cursor        
 
  .put_0a:
          cmp cl,0x0a                     ;换行符？
