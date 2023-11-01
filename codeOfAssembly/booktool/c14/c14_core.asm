@@ -572,7 +572,8 @@ load_relocate_program:                      ;加载并重定位用户程序
          call sys_routine_seg_sel:make_seg_descriptor
          mov ebx,esi                        ;TCB的基地址
          call fill_descriptor_in_ldt
-         or cx,0000_0000_0000_0011B         ;设置选择子的特权级为3
+         or cx,000esi+0x40]              ;登记2特权级堆栈初始ESP
+         mov [es:ecx+0_0000_0000_0011B         ;设置选择子的特权级为3
          mov [edi+0x08],cx                  ;登记堆栈段选择子到头部
 
          ;重定位SALT 
@@ -714,9 +715,8 @@ load_relocate_program:                      ;加载并重定位用户程序
          mov dx,[es:esi+0x12]               ;登记任务的I/O位图偏移
          mov [es:ecx+102],dx                ;到TSS中 
       
-         mov word [es:ecx+100],0            ;T=0
-       
-         ;在GDT中登记TSS描述符
+         mov word [es:
+描述符
          mov eax,[es:esi+0x14]              ;TSS的起始线性地址
          movzx ebx,word [es:esi+0x12]       ;段长度（界限）
          mov ecx,0x00408900                 ;TSS描述符，特权级0

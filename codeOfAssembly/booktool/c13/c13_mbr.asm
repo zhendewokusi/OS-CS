@@ -64,12 +64,12 @@
          xor esp,esp                        ;堆栈指针 <- 0 
          
          ;以下加载系统核心程序 
-         mov edi,core_base_address 
+         mov edi,core_base_address          
       
-         mov eax,core_start_sector
-         mov ebx,edi                        ;起始地址 
+         mov eax,core_start_sector          ;EAX存储开始读取扇区号
+         mov ebx,edi                        ;EBX存储开始存放的地址 
          call read_hard_disk_0              ;以下读取程序的起始部分（一个扇区） 
-      
+                                            ;EBX未放进read_hard_disk_0的栈中，一次调用加512
          ;以下判断整个程序有多大
          mov eax,[edi]                      ;核心程序尺寸
          xor edx,edx 
