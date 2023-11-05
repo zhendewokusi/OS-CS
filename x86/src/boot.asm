@@ -8,8 +8,8 @@
 
 ;===============================================================================
 SECTION  mbr  vstart=0x00007c00         
-         mov ax, 3
-         int 0x10 ; 将显示模式设置成文本模式
+         mov ax,3
+         int 0x10
          mov ax,cs      
          mov ss,ax
          mov sp,0x7c00
@@ -33,7 +33,7 @@ SECTION  mbr  vstart=0x00007c00
          mov dword [ebx+0x14],0x00cf9200    ;4KB粒度，数据段描述符，向上扩展 
 
          ;初始化描述符表寄存器GDTR
-         mov word [cs: pgdt],23             ;描述符表的界限   
+         mov word [cs: pgdt],0x18-0x01             ;描述符表的界限   
  
          lgdt [cs: pgdt]
       
@@ -91,6 +91,7 @@ SECTION  mbr  vstart=0x00007c00
 
    pge:
          ;准备打开分页机制。从此，再也不用在段之间转来转去，实在晕乎~ 
+         
          ;创建系统内核的页目录表PDT
          mov ebx,0x00020000                 ;页目录表PDT的物理地址
          
@@ -103,7 +104,7 @@ SECTION  mbr  vstart=0x00007c00
                                             ;此目录项仅用于过渡。
          ;在页目录内创建与线性地址0x80000000对应的目录项
          mov [ebx+0x800],edx                ;写入目录项（页表的物理地址和属性）
-
+         
          ;创建与上面那个目录项相对应的页表，初始化页表项 
          mov ebx,0x00021000                 ;页表的物理地址
          xor eax,eax                        ;起始页的物理地址 
@@ -120,22 +121,24 @@ SECTION  mbr  vstart=0x00007c00
          ;令CR3寄存器指向页目录，并正式开启页功能 
          mov eax,0x00020000                 ;PCD=PWT=0
          mov cr3,eax
+         xchg bx,bx
 
          ;将GDT的线性地址映射到从0x80000000开始的相同位置 
          sgdt [pgdt]
          mov ebx,[pgdt+2]
          add dword [pgdt+2],0x80000000      ;GDTR也用的是线性地址
          lgdt [pgdt]
+         xchg bx,bx
 
          mov eax,cr0
          or eax,0x80000000
          mov cr0,eax                        ;开启分页机制
-    
+   
          ;将堆栈映射到高端，这是非常容易被忽略的一件事。应当把内核的所有东西
          ;都移到高端，否则，一定会和正在加载的用户任务局部空间里的内容冲突，
          ;而且很难想到问题会出在这里。 
          add esp,0x80000000                 
-                                             
+         xchg bx,bx
          jmp [0x80040004]  
        
 ;-------------------------------------------------------------------------------

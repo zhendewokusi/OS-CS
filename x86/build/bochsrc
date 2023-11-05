@@ -39,7 +39,7 @@ port_e9_hack: enabled=0
 private_colormap: enabled=0
 clock: sync=none, time0=local, rtc_sync=0
 # no cmosimage
-log: -
+log: bochslog.txt
 logprefix: %t%e%d
 debug: action=ignore
 info: action=report
