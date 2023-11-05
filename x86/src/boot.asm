@@ -10,7 +10,6 @@
 SECTION  mbr  vstart=0x00007c00         
          mov ax, 3
          int 0x10 ; 将显示模式设置成文本模式
-        xchg bx,bx
          mov ax,cs      
          mov ss,ax
          mov sp,0x7c00
@@ -53,7 +52,6 @@ SECTION  mbr  vstart=0x00007c00
                                             ;清流水线并串行化处理器
          [bits 32]               
   flush:                                  
-         xchg bx,bx
          mov eax,0x00010                    ;加载数据段(4GB)选择子
          mov ds,eax
          mov es,eax
@@ -93,7 +91,6 @@ SECTION  mbr  vstart=0x00007c00
 
    pge:
          ;准备打开分页机制。从此，再也不用在段之间转来转去，实在晕乎~ 
-         
          ;创建系统内核的页目录表PDT
          mov ebx,0x00020000                 ;页目录表PDT的物理地址
          
@@ -133,7 +130,7 @@ SECTION  mbr  vstart=0x00007c00
          mov eax,cr0
          or eax,0x80000000
          mov cr0,eax                        ;开启分页机制
-   
+    
          ;将堆栈映射到高端，这是非常容易被忽略的一件事。应当把内核的所有东西
          ;都移到高端，否则，一定会和正在加载的用户任务局部空间里的内容冲突，
          ;而且很难想到问题会出在这里。 

@@ -1,17 +1,17 @@
     ; 硬盘主引导扇区代码
     ; 创建日期: 2023-11-02 20:11
-    core_start_addr equ 0x70000 
+    core_start_addr equ 0x70000
+    kernel_page_directory_table_addr    equ 0x00020000
+
 SECTION  mbr  vstart=0x00007c00         
     ;文本模式
-    mov ax,3
-    int 0x10
-
+    ; mov ax,3
+    ; int 0x10
     ; 初始化段寄存器
     mov ax,0x0
     mov ds,ax
     mov ss,ax
     mov es,ax
-    mov cs,ax
 
     mov ax,0x7c00
     mov sp,ax
@@ -26,7 +26,6 @@ SECTION  mbr  vstart=0x00007c00
     mov ds,eax
     ; ebx是偏移地址
     mov ebx,edx
-
     ;创建段描述符
     ; 索引为0的段描述符全部为0
     xor ecx,ecx
@@ -63,9 +62,8 @@ SECTION  mbr  vstart=0x00007c00
 
     [bits 32]
 flush:
-    xchg bx,bx
     ;栈段的选择子
-    mov eax,0x0014  
+    mov eax,0x0018  
     mov ss,eax
     mov esp,0x7000  ;堆栈指针初始化在0x7000
     ;其他数据段的选择子
@@ -78,6 +76,8 @@ flush:
 .load_core:
     push core_start_addr
     push 0x01    ;读取第一个扇区
+    
+    xchg bx,bx
     call read_disk
     mov eax,[edi]   ;获取内核程序大小
     xor ebx,ebx
@@ -89,26 +89,30 @@ flush:
     dec eax     ;余数是0要减1
 @1:
     or eax,eax
-    jz pge
+    jz page      ;内核只有一个扇区大小
 
     mov ecx,eax
     mov eax,0x01
-    inc eax
+    inc eax     ;读取下一个扇区
 @2:
+    push ebx
+    push eax
     call read_disk
     inc eax
     loop @2
 
-pge:
-    ; 开启分页机制
+; 开启分页机制
+page:
+
+
 
 .halt:
     jmp .halt
 read_disk:
     push ebp                    ; 保存旧的基指针
-    mov ebp, esp                ; 新的基指针是当前的栈顶
     push ecx                    ; 保存寄存器
     push edx                    ; 保存寄存器
+    mov ebp, esp                ; 新的基指针是当前的栈顶
 
     mov eax, [ebp + 16]         ; EAX = 逻辑扇区号，从栈上获取
     mov ebx, [ebp + 20]         ; EBX = 目标缓冲区地址，从栈上获取

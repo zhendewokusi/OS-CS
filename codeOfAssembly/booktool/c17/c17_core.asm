@@ -527,7 +527,7 @@ terminate_current_task:                     ;终止当前任务
                           db  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
                           db  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
          page_map_len     equ $-page_bit_map
-                          
+                          ds
          ;符号地址检索表
          salt:
          salt_1           db  '@PrintString'
@@ -634,7 +634,7 @@ load_relocate_program:                      ;加载并重定位用户程序
          mov cr3,eax                        ;刷新TLB 
          
          ;以下开始分配内存并加载用户程序
-         mov eax,[ebp+40]                   ;从堆栈中取出用户程序起始扇区号
+         mov eax,[e bp+40]                   ;从堆栈中取出用户程序起始扇区号
          mov ebx,core_buf                   ;读取程序头部数据
          call flat_4gb_code_seg_sel:read_hard_disk_0
 
