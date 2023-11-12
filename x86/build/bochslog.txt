@@ -34,7 +34,7 @@
 00000000000i[IMG   ] Disk image modules
 00000000000i[IMG   ]   flat concat sparse dll growing undoable volatile vmware3
 00000000000i[IMG   ]   vmware4 vbox vpc vvfat
-00000000000i[MEM0  ] allocated memory at 0x7f24da9dd010. after alignment, vector=0x7f24da9de000
+00000000000i[MEM0  ] allocated memory at 0x7f0edcfdd010. after alignment, vector=0x7f0edcfde000
 00000000000i[MEM0  ] 32.00MB
 00000000000i[MEM0  ] mem block size = 0x00020000, blocks=256
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
@@ -45,7 +45,7 @@
 00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS  ] Using local time for initial clock
-00000000000i[CMOS  ] Setting initial clock to: Sun Nov  5 17:08:54 2023 (time0=1699175334)
+00000000000i[CMOS  ] Setting initial clock to: Mon Nov  6 20:46:23 2023 (time0=1699274783)
 00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA   ] channel 4 used by cascade
 00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -173,50 +173,181 @@
 00000000000i[PLUGIN] reset of 'serial' plugin device by virtual method
 00000000000i[PLUGIN] reset of 'iodebug' plugin device by virtual method
 00000000000i[XGUI  ] charmap update. Font is 9 x 16
+00000004000e[XGUI  ] xkeypress(): keysym ffeb unhandled!
 00000004662i[BIOS  ] $Revision: 14314 $ $Date: 2021-07-14 18:10:19 +0200 (Wed, 14 Jul 2021) $
-00000318056i[KBD   ] reset-disable command received
-00000320838i[BIOS  ] Starting rombios32
-00000321276i[BIOS  ] Shutdown flag 0
-00000321874i[BIOS  ] ram_size=0x02000000
-00000322306i[BIOS  ] ram_end=32MB
-00000363087i[BIOS  ] Found 1 cpu(s)
-00000376740i[BIOS  ] bios_table_addr: 0x000f9d98 end=0x000fcc00
-00000704556i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
-00001032491i[P2ISA ] PCI IRQ routing: PIRQA# set to 0x0b
-00001032515i[P2ISA ] PCI IRQ routing: PIRQB# set to 0x09
-00001032539i[P2ISA ] PCI IRQ routing: PIRQC# set to 0x0b
-00001032563i[P2ISA ] PCI IRQ routing: PIRQD# set to 0x09
-00001032573i[P2ISA ] write: ELCR2 = 0x0a
-00001033342i[BIOS  ] PIIX3/PIIX4 init: elcr=00 0a
-00001046964i[BIOS  ] PCI: bus=0 devfn=0x00: vendor_id=0x8086 device_id=0x1237 class=0x0600
-00001049308i[BIOS  ] PCI: bus=0 devfn=0x08: vendor_id=0x8086 device_id=0x7000 class=0x0601
-00001051491i[BIOS  ] PCI: bus=0 devfn=0x09: vendor_id=0x8086 device_id=0x7010 class=0x0101
-00001051726i[PIDE  ] BAR #4: i/o base address = 0xc000
-00001052342i[BIOS  ] region 4: 0x0000c000
-00001054400i[BIOS  ] PCI: bus=0 devfn=0x0b: vendor_id=0x8086 device_id=0x7113 class=0x0680
-00001054676i[ACPI  ] new IRQ line = 11
-00001054690i[ACPI  ] new IRQ line = 9
-00001054718i[ACPI  ] new PM base address: 0xb000
-00001054732i[ACPI  ] new SM base address: 0xb100
-00001054760i[PCI   ] setting SMRAM control register to 0x4a
-00001218895i[CPU0  ] Enter to System Management Mode
-00001218906i[CPU0  ] RSM: Resuming from System Management Mode
-00001382962i[PCI   ] setting SMRAM control register to 0x0a
-00001409578i[BIOS  ] MP table addr=0x000f9e70 MPC table addr=0x000f9da0 size=0xc8
-00001411285i[BIOS  ] SMBIOS table addr=0x000f9e80
-00001413374i[BIOS  ] ACPI tables: RSDP addr=0x000f9fa0 ACPI DATA addr=0x01ff0000 size=0xff8
-00001416358i[BIOS  ] Firmware waking vector 0x1ff00cc
-00001418612i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
-00001419342i[BIOS  ] bios_table_cur_addr: 0x000f9fc4
-00001537462i[VBIOS ] VGABios $Id: vgabios.c 288 2021-05-28 19:05:28Z vruppert $
-00001537533i[BXVGA ] VBE known Display Interface b0c0
-00001537565i[BXVGA ] VBE known Display Interface b0c5
-00001540208i[VBIOS ] VBE Bios $Id: vbe.c 292 2021-06-03 12:24:22Z vruppert $
-00001768849i[BIOS  ] ata0-0: PCHS=32/16/63 translation=none LCHS=32/16/63
-00003632352i[XGUI  ] charmap update. Font is 9 x 16
-00005202813i[BIOS  ] IDE time out
-00017178809i[BIOS  ] Booting from 0000:7c00
-00017231858i[CPU0  ] [17231858] Stopped on MAGIC BREAKPOINT
-00017231858i[XGUI  ] charmap update. Font is 9 x 16
-00017231863i[CPU0  ] [17231863] Stopped on MAGIC BREAKPOINT
-00017231868i[CPU0  ] [17231868] Stopped on MAGIC BREAKPOINT
+00000318071i[KBD   ] reset-disable command received
+00000320815i[BIOS  ] Starting rombios32
+00000321253i[BIOS  ] Shutdown flag 0
+00000321851i[BIOS  ] ram_size=0x02000000
+00000322283i[BIOS  ] ram_end=32MB
+00000363028i[BIOS  ] Found 1 cpu(s)
+00000376681i[BIOS  ] bios_table_addr: 0x000f9d98 end=0x000fcc00
+00000704497i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
+00001032432i[P2ISA ] PCI IRQ routing: PIRQA# set to 0x0b
+00001032456i[P2ISA ] PCI IRQ routing: PIRQB# set to 0x09
+00001032480i[P2ISA ] PCI IRQ routing: PIRQC# set to 0x0b
+00001032504i[P2ISA ] PCI IRQ routing: PIRQD# set to 0x09
+00001032514i[P2ISA ] write: ELCR2 = 0x0a
+00001033283i[BIOS  ] PIIX3/PIIX4 init: elcr=00 0a
+00001046905i[BIOS  ] PCI: bus=0 devfn=0x00: vendor_id=0x8086 device_id=0x1237 class=0x0600
+00001049249i[BIOS  ] PCI: bus=0 devfn=0x08: vendor_id=0x8086 device_id=0x7000 class=0x0601
+00001051432i[BIOS  ] PCI: bus=0 devfn=0x09: vendor_id=0x8086 device_id=0x7010 class=0x0101
+00001051667i[PIDE  ] BAR #4: i/o base address = 0xc000
+00001052283i[BIOS  ] region 4: 0x0000c000
+00001054341i[BIOS  ] PCI: bus=0 devfn=0x0b: vendor_id=0x8086 device_id=0x7113 class=0x0680
+00001054617i[ACPI  ] new IRQ line = 11
+00001054631i[ACPI  ] new IRQ line = 9
+00001054659i[ACPI  ] new PM base address: 0xb000
+00001054673i[ACPI  ] new SM base address: 0xb100
+00001054701i[PCI   ] setting SMRAM control register to 0x4a
+00001218836i[CPU0  ] Enter to System Management Mode
+00001218847i[CPU0  ] RSM: Resuming from System Management Mode
+00001382903i[PCI   ] setting SMRAM control register to 0x0a
+00001409519i[BIOS  ] MP table addr=0x000f9e70 MPC table addr=0x000f9da0 size=0xc8
+00001411226i[BIOS  ] SMBIOS table addr=0x000f9e80
+00001413315i[BIOS  ] ACPI tables: RSDP addr=0x000f9fa0 ACPI DATA addr=0x01ff0000 size=0xff8
+00001416299i[BIOS  ] Firmware waking vector 0x1ff00cc
+00001418553i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
+00001419283i[BIOS  ] bios_table_cur_addr: 0x000f9fc4
+00001537403i[VBIOS ] VGABios $Id: vgabios.c 288 2021-05-28 19:05:28Z vruppert $
+00001537474i[BXVGA ] VBE known Display Interface b0c0
+00001537506i[BXVGA ] VBE known Display Interface b0c5
+00001540149i[VBIOS ] VBE Bios $Id: vbe.c 292 2021-06-03 12:24:22Z vruppert $
+00001768790i[BIOS  ] ata0-0: PCHS=32/16/63 translation=none LCHS=32/16/63
+00005202754i[BIOS  ] IDE time out
+00005568732i[XGUI  ] charmap update. Font is 9 x 16
+00017178810i[BIOS  ] Booting from 0000:7c00
+00017231859i[CPU0  ] [17231859] Stopped on MAGIC BREAKPOINT
+00017231859i[XGUI  ] charmap update. Font is 9 x 16
+00017231864i[CPU0  ] [17231864] Stopped on MAGIC BREAKPOINT
+00017231869i[CPU0  ] [17231869] Stopped on MAGIC BREAKPOINT
+00017233217p[PIC   ] >>PANIC<< slave:  PIC ID = 4 not supported
+00020004842e[CPU0  ] fetch_raw_descriptor: LDTR.valid=0
+00024002028e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00028003832e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00032001336e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00036003138e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00040004944e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00044003466e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00048005266e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00052002776e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00056004584e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00060002098e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00064004906e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00068002414e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00072004220e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00076001726e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00080003536e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00084002052e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00088003856e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00092001370e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00096003172e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00100004978e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00104003490e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00108001012e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00112002812e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00116004610e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00120002124e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00124004932e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00128002440e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00132004246e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00136001758e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00140004574e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00144002080e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00148003884e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00152001398e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00156003206e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00160001720e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00164003522e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00168001034e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00172002834e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00176004638e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00180003158e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00184004956e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00188002474e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00192004270e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00196001792e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00200004598e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00204002114e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00208003908e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00212001422e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00216003230e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00220001754e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00224003556e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00228001068e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00232002868e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00236004672e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00240003192e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00244004990e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00248002498e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00252004310e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00256002828e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00260004624e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00264002140e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00268003944e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00272001454e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00276004268e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00280001782e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00284003584e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00288001096e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00292002902e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00296001414e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00300003214e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00304005012e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00308002530e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00312004342e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00316002860e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00320004656e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00324002172e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00328003966e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00332001486e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00336004300e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00340001804e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00344003606e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00348001118e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00352002924e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00356001446e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00360003246e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00364005044e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00368002562e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00372004364e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00376002882e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00380004688e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00384002194e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00386184000e[XGUI  ] xkeypress(): keysym ffeb unhandled!
+00388004004e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00391384000e[XGUI  ] xkeypress(): keysym ffeb unhandled!
+00392002520e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00396004324e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00400001838e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00401280000e[XGUI  ] xkeypress(): keysym ffeb unhandled!
+00404003640e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00408001158e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00412003960e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00416001472e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00420003272e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00424005080e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00428002594e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00432001114e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00436002912e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00440004708e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00444002224e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00448004034e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00452002550e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00454608000e[XGUI  ] xkeypress(): keysym ffeb unhandled!
+00456004354e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00460001868e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00464003660e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00468001178e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00468764000e[XGUI  ] xkeypress(): keysym ffeb unhandled!
+00472003990e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00475656000e[XGUI  ] xkeypress(): keysym ffeb unhandled!
+00476001502e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00480003302e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00484005100e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00488002624e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00492001144e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00496002942e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00500004738e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00504002260e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)
+00508005066e[CPU0  ] fetch_raw_descriptor: GDT: index (2b7) 56 > limit (4f)

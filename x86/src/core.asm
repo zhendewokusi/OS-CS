@@ -917,7 +917,7 @@ start:
          mov dword [pidt+2],idt_linear_address
          lidt [pidt]                        ;加载中断描述符表寄存器IDTR
 
-         ;设置8259A中断控制器
+         ;设置8259A中断控制器      ;主片
          mov al,0x11
          out 0x20,al                        ;ICW1：边沿触发/级联方式
          mov al,0x20
@@ -926,7 +926,7 @@ start:
          out 0x21,al                        ;ICW3:从片级联到IR2
          mov al,0x01
          out 0x21,al                        ;ICW4:非总线缓冲，全嵌套，正常EOI
-
+                                 ;从片
          mov al,0x11
          out 0xa0,al                        ;ICW1：边沿触发/级联方式
          mov al,0x70
@@ -955,7 +955,6 @@ start:
 
          mov ebx,message_0
          call flat_4gb_code_seg_sel:put_string
-
          ;显示处理器品牌信息 
          mov eax,0x80000002
          cpuid
@@ -1004,6 +1003,7 @@ start:
 
          ;对门进行测试 
          mov ebx,message_1
+       ;   call flat_4gb_code_seg_sel:put_string
          call far [salt_1+256]              ;通过门显示信息(偏移量将被忽略) 
 
          ;初始化创建程序管理器任务的任务控制块TCB
@@ -1046,7 +1046,7 @@ start:
          mov dword [ebx+0x06],0             ;用户任务局部空间的分配从0开始。
          mov word [ebx+0x0a],0xffff         ;登记LDT初始的界限到TCB中
       
-         push dword 50                      ;用户程序位于逻辑50扇区
+         push dword 100                      ;用户程序位于逻辑50扇区
          push ebx                           ;压入任务控制块起始线性地址 
          call load_relocate_program
          mov ecx,ebx         
@@ -1059,7 +1059,7 @@ start:
          mov dword [ebx+0x06],0             ;用户任务局部空间的分配从0开始。
          mov word [ebx+0x0a],0xffff         ;登记LDT初始的界限到TCB中
 
-         push dword 100                     ;用户程序位于逻辑100扇区
+         push dword 50                     ;用户程序位于逻辑100扇区
          push ebx                           ;压入任务控制块起始线性地址
          call load_relocate_program
          mov ecx,ebx
