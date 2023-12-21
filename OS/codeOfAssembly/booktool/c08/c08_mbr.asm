@@ -128,7 +128,7 @@ read_hard_disk_0:                        ;从硬盘读取一个逻辑扇区
          pop dx
          pop cx
          pop bx
-         pop ax
+         pop axloader
       
          ret
 
